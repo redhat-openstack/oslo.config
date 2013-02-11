@@ -550,6 +550,10 @@ def find_config_files(project=None, prog=None, extension='.conf'):
 
     config_files = []
     if project:
+        config_files.append(_search_dirs(['/usr/share/%s/' % project],
+                                         project, '-dist%s' % extension))
+        config_files.append(_search_dirs(['/usr/share/%s/' % project],
+                                         prog, '-dist%s' % extension))
         config_files.append(_search_dirs(cfg_dirs, project, extension))
     config_files.append(_search_dirs(cfg_dirs, prog, extension))
 
